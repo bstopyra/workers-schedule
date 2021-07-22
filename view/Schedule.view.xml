@@ -1,0 +1,28 @@
+<mvc:View controllerName="hr.teach.controller.Schedule" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:l="sap.ui.layout">
+	<semantic:FullscreenPage id="page" navButtonPress="onNavBack" showNavButton="true" title="{i18n>scheduleViewTitle}">
+		<semantic:content>
+			<!-- Kod kontrolki Calendar Date Interval -->
+			<Table id="scheduleTable" noDataText="{i18n>tableNoDataText}" growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished">
+				<headerToolbar>
+					<Toolbar>
+						<Title id="tableHeader" text="{scheduleView>/scheduleTableTitle}"/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<!-- Kod dla kolumn -->
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation" press="onPress">
+						<cells>
+							<!-- Kod dla zawartości wierszy -->
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</semantic:content>
+		<semantic:customFooterContent>
+			<!-- Kod dla przycisku (dodawanie kursu) -->
+		</semantic:customFooterContent>
+	</semantic:FullscreenPage>
+</mvc:View>

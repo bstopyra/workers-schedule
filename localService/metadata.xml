@@ -1,0 +1,57 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZTEACHER_SERVICE_SRV" xml:lang="pl" sap:schema-version="1">
+            <EntityType Name="Lessons" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="LessonId"/>
+                    <PropertyRef Name="LessonDate"/>
+                    <PropertyRef Name="LessonTime"/>
+                </Key>
+                <Property Name="LessonId" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LessonName" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Komentarz" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RoomName" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Komentarz" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CourseDetails" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Komentarz" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LessonDate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Data" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LessonTime" Type="Edm.Time" Nullable="false" Precision="0" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="LessonToGrades" Relationship="ZTEACHER_SERVICE_SRV.LessonToGrades" FromRole="FromRole_LessonToGrades" ToRole="ToRole_LessonToGrades"/>
+            </EntityType>
+            <EntityType Name="Students" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="StudentId"/>
+                </Key>
+                <Property Name="StudentId" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StudentName" Type="Edm.String" Nullable="false" MaxLength="50" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Grades" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="LessonId"/>
+                    <PropertyRef Name="StudentId"/>
+                </Key>
+                <Property Name="LessonId" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StudentId" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Grade" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="LessonToGrades" sap:content-version="1">
+                <End Type="ZTEACHER_SERVICE_SRV.Lessons" Multiplicity="1" Role="FromRole_LessonToGrades"/>
+                <End Type="ZTEACHER_SERVICE_SRV.Grades" Multiplicity="*" Role="ToRole_LessonToGrades"/>
+            </Association>
+            <EntityContainer Name="ZTEACHER_SERVICE_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="Lessons" EntityType="ZTEACHER_SERVICE_SRV.Lessons" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Students" EntityType="ZTEACHER_SERVICE_SRV.Students" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Grades" EntityType="ZTEACHER_SERVICE_SRV.Grades" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="LessonToGrades" Association="ZTEACHER_SERVICE_SRV.LessonToGrades" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Lessons" Role="FromRole_LessonToGrades"/>
+                    <End EntitySet="Grades" Role="ToRole_LessonToGrades"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZTEACHER_SERVICE_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZTEACHER_SERVICE_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>
